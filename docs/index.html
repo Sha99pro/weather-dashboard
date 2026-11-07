@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+
+<h1>Weather Dashboard</h1>
+
+<input type="text" id="cityInput" placeholder="Enter city name">
+<button onclick="getWeather()">Search</button>
+
+<div id="weatherResult"></div>
+
+<script>
+    async function getWeather() {
+        const city = document.getElementById("cityInput").value;
+
+        if (!city.trim()) {
+            alert("Please enter a city name.");
+            return;
+        }
+
+        const response = await fetch(`/weather?city=${encodeURIComponent(city)}`);
+        const data = await response.json();
+
+        document.getElementById("weatherResult").innerHTML = `
+                <h2>${data.name}</h2>
+                <p>Temperature: ${data.main.temp} °F</p>
+                <p>Feels Like: ${data.main.feels_like} °F</p>
+                <p>Humidity: ${data.main.humidity}%</p>
+                <p>Weather: ${data.weather[0].description}</p>
+            `;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+package com.example.demo.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+// Represents the properties we want from the "weather" key of the JSON response.
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Weather {
+
+    private String main;
+    private String description;
+
+    public String getMain() {
+        return main;
+    }
+
+    public void setMain(String main) {
+        this.main = main;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}

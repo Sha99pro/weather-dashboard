@@ -11,7 +11,8 @@ public class WeatherService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private static final String API_KEY = "68345c2a2eff99b5d921a023c0f186f5";
+    @Value("${OPENWEATHER_API_KEY}")
+    private String apiKey;
 
     private static final String GEO_URL =
             "https://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={key}";
@@ -28,7 +29,7 @@ public class WeatherService {
                 GEO_URL,
                 GeocodeResult[].class,
                 city,
-                API_KEY
+                apiKey
         );
 
         if (geoResults == null || geoResults.length == 0) {
@@ -45,7 +46,7 @@ public class WeatherService {
                 WeatherData.class,
                 lat,
                 lon,
-                API_KEY
+                apiKey
         );
 
         if (weather == null) {

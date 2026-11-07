@@ -3,11 +3,17 @@ package com.example.demo.runner;
 import com.example.demo.model.WeatherData;
 import com.example.demo.service.WeatherService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 @Component
+@ConditionalOnProperty(
+        name = "weather.console.enabled",
+        havingValue = "true",
+        matchIfMissing = true
+)
 public class WeatherDashboardRunner implements CommandLineRunner {
 
     private final WeatherService weatherService;

@@ -17,7 +17,7 @@ public class WeatherService {
             "https://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={key}";
 
     private static final String WEATHER_URL =
-            "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={key}&units=Fahrenheit";
+            "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={key}&units=imperial";
 
 
     public WeatherData getCurrentWeather(String city) {
